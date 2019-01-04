@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta charset="UTF-8">
+    <title>D.Va</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+  </head>
+  <body>
+
+    <main>
+
+      <div class="dva">
+        
+        <div class="ears">
+          <div class="ear ear--l"></div>
+          <div class="ear ear--r"></div>
+        </div> <!-- .ears -->
+
+        <div class="head">
+
+          <div class="face">
+          
+            <div class="eyes">
+              <div class="eye eye--l">
+                <div class="brow"></div>
+                <div class="pupil"></div>
+              </div>
+              <div class="eye eye--r">
+                <div class="brow"></div>
+                <div class="pupil"></div>
+              </div>
+            </div> <!-- .eyes -->
+
+            <div class="nose-wrapper">
+              <div class="nose"></div>
+            </div> <!-- .nose-wrapper -->
+
+            <div class="mouth-wrapper">
+              <div class="mouth"></div>
+            </div> <!-- .mouth-wrapper -->
+          
+          </div> <!-- .face -->
+          
+        </div> <!-- .head -->
+        
+      </div>
+
+      <div class="title">
+        <span class="line line__top"></span>
+        <h1 data-splitting>
+          <span class="nerf">Nerf</span>
+          <span class="this">This!</span>
+        </h1>
+        <span class="line line__bottom"></span>
+      </div>
+
+    </main>
+    
+    <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+  </body>
+</html>

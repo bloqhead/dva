@@ -1,0 +1,348 @@
+$pink: #f33ea2;
+$white: #fff;
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  font-family: 'Press Start 2P', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #fff;
+  margin: 0;
+  background-color: #000;
+  background: radial-gradient(#000 50%, darken($pink, 20%));
+}
+
+main {
+  max-width: 50em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+.title {
+  $i: .4rem;
+  font-size: 2.4rem;
+  color: $white;
+  text-align: center;
+  text-shadow:
+   -#{$i} -#{$i} 0 $pink,
+    #{$i} -#{$i} 0 $pink,
+    -#{$i} #{$i} 0 $pink,
+     #{$i} #{$i} 0 $pink,
+     1rem 1rem 0 darken($pink, 30%);
+  margin: 6rem 0 0 0;
+  transform-origin: center;
+  transform:
+    rotate(-5deg)
+    skewX(-20deg);
+
+  h1 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    span {
+      display: inline-block;
+    }
+
+    .nerf, .this {
+      margin: 0 1rem;
+    }
+  }
+
+  @media (min-width: 50rem) {
+    font-size: 3.2rem;
+  }
+}
+
+.whitespace {
+  margin: 0 .25rem;
+}
+
+.words {
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.word {
+  
+}
+
+.line {
+  display: block;
+  height: .5rem;
+  background-color: $pink;
+  border-radius: .5rem;
+}
+
+.line__top {
+
+}
+
+.line__bottom {
+
+}
+
+// Mixins
+
+@mixin pseudo {
+  position: absolute;
+  
+  &:before, &:after {
+    position: absolute;
+    display: block;
+    content: "";
+  }
+}
+
+@mixin shadow {
+  box-shadow: 0 0 0 1.25rem $pink;
+}
+
+// Elements
+
+.head, .eye, .nose, .ear {
+  @include pseudo;
+}
+
+.dva {
+  position: relative;
+  width: 26rem;
+  height: 16rem;
+}
+
+.head {
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+  border-radius: 
+    220rem 220rem 220rem 220rem /
+    170rem 170rem 120rem 120rem
+  ;
+  @include shadow;
+}
+
+.face {
+  transform-origin: center;
+}
+
+.ears {
+  position: relative;
+  z-index: -1;
+}
+
+.ear {
+  z-index: -1;
+  background-color: $white;
+  width: 12rem;
+  height: 12rem;
+  transform-origin: center;
+  @include shadow;
+  transform: rotate(15deg) translate(-5rem,-9rem);
+  border-radius: 0 24rem;
+}
+
+.ear--l {
+  transform: rotate(15deg) translate(-5rem,-9rem);
+}
+
+.ear--r {
+  transform: rotate(75deg) translate(-5rem,-18rem);
+}
+
+.eyes {
+
+}
+
+.eye {
+  
+}
+
+.brow {
+  position: absolute;
+  background-color: $pink;
+  width: 5rem;
+  height: 1.5rem;
+  transform-origin: center;
+}
+
+.pupil {
+  position: relative;
+  background-color: $white;
+  border-radius: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
+  @include shadow;
+}
+
+.eye--l {
+  transform: translate(7rem, 6rem);
+  
+  .brow {
+    border-radius: 0 1rem;
+    transform:
+      skewX(30deg)
+      rotate(28deg)
+      translate(-1rem,-2rem);
+  }
+}
+
+.eye--r {
+  transform: translate(17rem, 6rem);
+  
+  .brow {
+    border-radius: 1rem 0;
+    transform:
+      skewX(-30deg)
+      rotate(-28deg)
+      translate(-1.6rem, -3.5rem);
+  }
+}
+
+.nose-wrapper {
+  position: absolute;
+  top: 9rem; left: 13rem;
+  transform: scale(.85, .5)
+}
+
+// Rounded triangle in CSS based on this
+// https://stackoverflow.com/questions/14446677/how-to-make-3-corner-rounded-triangle-in-css
+.nose {
+  background-color: $pink;
+  transform-origin: top center;
+  transform:
+    rotate(359deg)
+    skewX(-30deg)
+    scale(1, .866);
+  @include pseudo;
+
+  &, &:before, &:after {
+    width: 1.6em;
+    height: 1.6em;
+    border-top-right-radius: 30%;
+  }
+
+  &:before, &:after {
+    background-color: inherit;
+  }
+
+  &:before {
+    transform:
+      rotate(-135deg)
+      skewX(-45deg)
+      scale(1.414, .707)
+      translate(0, -50%);
+  }
+
+  &:after {
+    transform:
+      rotate(135deg)
+      skewY(-45deg)
+      scale(.707, 1.414)
+      translate(50%);
+  }
+}
+
+.mouth-wrapper {
+  transform: translate(13rem, 11rem);
+  @include pseudo;
+  
+  &:before, &:after {
+    width: 2.5rem;
+    height: 1rem;
+    background-color: $pink;
+    border-radius: .5rem;
+  }
+  
+  &:before {
+    transform-origin: bottom left;
+    transform:
+      translate(-3.65rem, -.45rem)
+      rotate(30deg);
+  }
+  
+  &:after {
+    transform-origin: bottom right;
+    transform:
+      translate(1.25rem, -.45rem)
+      rotate(-30deg);
+  }
+}
+
+.mouth {
+  @include pseudo;
+  
+  &:before, &:after {
+    width: 2.5rem;
+    height: 1rem;
+    background-color: $pink;
+    border-radius: .5rem;
+  }
+  
+  &:before {
+    transform-origin: top right;
+    transform:
+      translate(-2.5rem, -.3rem)
+      rotate(-30deg);
+  }
+  
+  &:after {
+    transform-origin: top left;
+    transform:
+      translate(.15rem, -.3rem)
+      rotate(30deg);
+  }
+}
+
+.controls {
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  padding: 1rem;
+
+  button {
+    display: block;
+    background-color: $pink;
+    color: #fff;
+    border: 0;
+    border-radius: .25rem;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: inherit;
+  }
+}
+
+// dev only
+// body {
+  
+//   &:before, &:after {
+//     position: fixed;
+//     z-index: 999;
+//     width: 0;
+//     height: 100vw;
+//     content: "";
+//     border-right: 1px dashed red;
+//   }
+  
+//   &:after {
+//     transform: rotate(90deg);
+//   }
+// }
